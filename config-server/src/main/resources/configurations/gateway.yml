@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: users
+          uri: lb://users
+          predicates:
+            - Path=/users/**
+        - id: plugins
+          uri: lb://plugins
+          predicates:
+            - Path=/plugins/**
+        - id: marketplaces
+          uri: lb://marketplaces
+          predicates:
+            - Path=/marketplaces/**
+        - id: cores
+          uri: lb://cores
+          predicates:
+            - Path=/cores/**
+  server:
+    port: 8222
+
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka
