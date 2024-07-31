@@ -15,17 +15,17 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
-    @PostMapping("/add")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> save(@RequestBody UserPrincipale userPrincipale){
-        if(userService.findbyNom(userPrincipale.getNom())==null){
-            userService.saveUser(userPrincipale);
-            return ResponseEntity.ok(userPrincipale);
-        }else {
-            return ResponseEntity.ok("this userPrincipale exist deja ");
-        }
-
-    }
+//    @PostMapping("/register")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public ResponseEntity<?> save(@RequestBody UserPrincipale userPrincipale){
+//        if(userService.findbyNom(userPrincipale.getNom())==null){
+//            userService.saveUser(userPrincipale);
+//            return ResponseEntity.ok(userPrincipale);
+//        }else {
+//            return ResponseEntity.ok("this userPrincipale exist deja ");
+//        }
+//
+//    }
     @GetMapping("/allusers")
     public  ResponseEntity<?> findAll(){
         return ResponseEntity.ok(userService.findAll());

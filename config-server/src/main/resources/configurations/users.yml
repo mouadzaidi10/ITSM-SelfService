@@ -1,5 +1,4 @@
-server:
-  port: 8070
+
 spring:
   application:
     name: users
@@ -20,3 +19,24 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+server:
+  port: 8070
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+    org.springframework.web: DEBUG
+
+
+
+# Optional configurations for detailed request logging
+request:
+  logging:
+    filter:
+      include-client-info: true
+      include-query-string: true
+      include-payload: true
+      max-payload-length: 10000
+
+
+
+

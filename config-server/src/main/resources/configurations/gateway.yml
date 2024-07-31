@@ -8,7 +8,7 @@ spring:
           enabled: true
       routes:
         - id: users
-          uri: lb://users
+          uri: http://localhost:8070
           predicates:
             - Path=/users/**
         - id: plugins
@@ -23,11 +23,27 @@ spring:
           uri: lb://cores
           predicates:
             - Path=/cores/**
-  server:
-    port: 8222
+server:
+  port: 8222
 
 eureka:
   client:
     register-with-eureka: false
     service-url:
       defaultZone: http://localhost:8761/eureka
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+    org.springframework.web: DEBUG
+
+
+
+# Optional configurations for detailed request logging
+request:
+  logging:
+    filter:
+      include-client-info: true
+      include-query-string: true
+      include-payload: true
+      max-payload-length: 10000
+

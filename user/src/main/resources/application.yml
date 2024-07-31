@@ -1,8 +1,42 @@
 
 spring:
-  application:
-    name: users
   config:
     import: optional:configserver:http://localhost:8888
+  application:
+    name: users
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/users
+    username: postgres
+    password: mouad
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
 server:
   port: 8070
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+    org.springframework.web: DEBUG
+
+
+
+# Optional configurations for detailed request logging
+request:
+  logging:
+    filter:
+      include-client-info: true
+      include-query-string: true
+      include-payload: true
+      max-payload-length: 10000
+
+
