@@ -21,4 +21,13 @@ public class UserPrincipale {
     String mdp;
     String email;
 
+    @Override
+    public String toString() {
+        return "UserPrincipale{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

@@ -34,7 +34,7 @@ public class UserController {
     public  ResponseEntity<?> login(@RequestBody UserPrincipale userPrincipale){
         UserPrincipale userPrincipale1 =userService.findbyNom(userPrincipale.getNom());
         if (Objects.equals(userPrincipale.getNom(), userPrincipale1.getNom()) && Objects.equals(userPrincipale.getMdp(), userPrincipale1.getMdp())){
-            return ResponseEntity.ok("Login Accepted");
+            return ResponseEntity.ok("Login Accepted for user :"+userPrincipale1);
         }else
             return ResponseEntity.ok("Login  Not accepted");
     }
